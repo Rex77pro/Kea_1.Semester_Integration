@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paypal Sandbox</title>
+</head>
+<body>
+    <script src="https://www.paypal.com/sdk/js?client-id=AccXsaVSvPS3n3ieJ_6q88ex_7T1-LXJcdQYN8GlrRn7IXHrLnjwKvMq-t3uYu9BN3RyErzA555ozjTn&currency=DKK&locale=da_DK"></script>
+
+    <div id="paypal-button-container"></div>
+
+    <script>
+        paypal.Buttons({
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units:[{
+                        amount: {
+                            value: '10.00',
+                            currency_code: 'DKK'
+                        }
+                    }]
+                });
+            },
+
+            onApprove: (data, actions) => {
+                return actions.order.capture().then(details =>{
+                    alert('Betaling gennemført af ' + details.payer.name.given_name);
+                });
+            },
+
+            onError: err => {
+                console.error(err);
+                alert('Fejl ved betaling');
+            }
+        }).render('#paypal-button-container')
+    </script>
+</body>
+</html>
