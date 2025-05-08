@@ -1,1 +1,0 @@
-window.PAYPAL_CLIENT_ID = '';
