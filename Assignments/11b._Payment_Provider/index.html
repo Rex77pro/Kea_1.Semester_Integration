@@ -4,18 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paypal Sandbox</title>
-    <script src="./config/config.js"></script>
 </head>
 <body>
-    <script>
-        if (!window.PAYPAL_CLIENT_ID){
-            console.error('PAYPAL_CLIENT_ID er ikke sat – husk at kopiere config.sample.js til config.js og udfylde den.');
-        } else {
-            const s = document.createElement('script');
-            s.src = `https://www.paypal.com/sdk/js?client-id=${window.PAYPAL_CLIENT_ID}&currency=DKK&locale=da_DK`;
-            document.head.appendChild(s);
-        }
-    </script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AccXsaVSvPS3n3ieJ_6q88ex_7T1-LXJcdQYN8GlrRn7IXHrLnjwKvMq-t3uYu9BN3RyErzA555ozjTn&currency=DKK&locale=da_DK"></script>
 
     <div id="paypal-button-container"></div>
 
