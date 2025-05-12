@@ -35,3 +35,16 @@ GO
 CREATE DATABASE targetdb;
 GO
 ````
+
+FYI. It is possible to keep repeating the migrate and recreate scripts. 
+
+## Full Recreate
+
+In order to clean all databases, you need to run the MSSQL query as given, and also shut down the docker container.
+
+This is done by running:
+
+````powershell
+docker compose down -v
+````
+
