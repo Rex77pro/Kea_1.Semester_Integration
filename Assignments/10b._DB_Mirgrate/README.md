@@ -15,6 +15,21 @@ This will create a Postgres Database with two tabels:
 
 It also seeds data into the database
 
+Before we migrate we need to create a user in the mssql database
+````sql
+IF SUSER_ID('migrator') IS NULL
+    CREATE LOGIN migrator WITH PASSWORD = 'Str0ng!Pass', CHECK_POLICY = OFF;
+ELSE
+    ALTER LOGIN migrator WITH PASSWORD = 'Str0ng!Pass', CHECK_POLICY = OFF;
+
+/* 2. Opret database-bruger i targetdb og giv fulde rettigheder */
+USE targetdb;
+IF USER_ID('migrator') IS NULL
+    CREATE USER migrator FOR LOGIN migrator;
+ALTER ROLE db_owner ADD MEMBER migrator;
+GO
+````
+
 ## Migrate
 
 To mirgrate my database into the mssql database i run the following
@@ -35,8 +50,7 @@ GO
 CREATE DATABASE targetdb;
 GO
 ````
-
-FYI. It is possible to keep repeating the migrate and recreate scripts. 
+By doing this you also remove the user, which makes it not able to connect. Therfor you might need to run the user script again.
 
 ## Full Recreate
 
