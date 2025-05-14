@@ -1,12 +1,38 @@
-# React + Vite
+# React + Vite + Firebase Authentication
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setup
 
-Currently, two official plugins are available:
+### Vite 
+I started by setting up my project by running:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+````powershell
+npm create vite@latest .
+````
 
-## Expanding the ESLint configuration
+And just followed it in the terminal by giving it a name, type of language etc. 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Firebase
+
+Then i installed Firebase 
+
+````powershell
+npm install firebase
+````
+
+* I went into the console on Firebases website. 
+* Created a project and added it as an Web-App.
+* I followed it step-by-step and later it will automatically configure a script for you almost as mine in ./src/firebase.js. 
+* I have then chosen to hide my keys in an .env file.
+
+### Code
+
+* I made the src/AuthContext.jsx which keeps trak of a users state (logged in/ logged out)
+* I made the src/AuthFrom.jsx which is a Form for the user to be able to login. 
+* I Updated src/App.jsx to display and handle the users state in the frontend
+* I Updated src/main.jsx to import the needed packages
+
+### Run
+
+````powershell
+npm run dev
+````
